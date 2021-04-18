@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+<title>Creative Colorlib SignUp Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+</head>
+<body>
+	<script>
+        function check1()
+                {
+                  document.getElementById("l1").style.border = "border:1px solid";
+                  document.getElementById("l2").style.border = "border:1px solid;";
+                }
+                function check()
+                {
+                   if((document.getElementById("l1").value!=document.getElementById("l2").value)||document.getElementById("l1").value==""||document.getElementById("l2").value=="")
+                  {
+		            document.getElementById("l1").value="";
+                    document.getElementById("l2").value="";
+                    document.getElementById("l1").style.border = "thick solid red";
+                    document.getElementById("l2").style.border = "thick solid red";
+                   }
+                   else
+                   {
+		            document.getElementById("l1").style.border = "thick solid green";
+                    document.getElementById("l2").style.border = "thick solid green";
+                   }
+                }
+				function submission()
+				{
+					console.log("submitted")
+					if((document.getElementById("l1").value!=document.getElementById("l2").value)||document.getElementById("l1").value==""||document.getElementById("l2").value=="")
+                  {
+                      alert("Password does not Match!!!")
+                   }
+				}
+	</script>
+	<div class="main-w3layouts wrapper">
+		<h1>Inscriptio SignUp Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form id="myform" method="POST" action="/login/" onsubmit="submission()">
+					<input class="text" type="text" name="Username" placeholder="Username" required="">
+					<br><br>
+					<input class="text" type="password" id="l1" name="password" placeholder="Password" required="">
+					<input class="text w3lpass" type="password" id="l2" name="retypepassword" placeholder="Confirm Password" required="" onmouseout="check()">
+					<div class="wthree-text">
+						<label class="anim">
+							<input type="checkbox" class="checkbox" required="" onfocus="check()">
+							<span>I Agree To The Terms & Conditions</span>
+                        
+						</label>
+						<div id="results"></div> 
+					</div>
+					<input type="submit" name="submit" value="Sign Up">{% csrf_token %}
+				</form>
+			</div>
+		</div>
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>
