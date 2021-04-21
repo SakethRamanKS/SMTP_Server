@@ -1,4 +1,5 @@
 def extractDetails(request):
+    """Extracts the fromId, toId, subject and body from a received mail"""
     from_email = request.form['from']
     to_email = request.form['to']
     subject = request.form['subject']
@@ -14,7 +15,3 @@ def extractDetails(request):
     print("In extractDetails function")
     print(username, fromMailId, subject, body)
     return username, fromMailId, subject, body
-
-
-# random@outlook.com
-# Random Person <random@gmail.com>

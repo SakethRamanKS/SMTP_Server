@@ -4,6 +4,7 @@ import dns.resolver
 timeoutDuration = 2
 
 def getMxRecord(domainName):
+    """Queries the MX Record of a domain"""
     mxRecords = dns.resolver.resolve(domainName, "MX")
     if not mxRecords:
         return None
@@ -12,7 +13,9 @@ def getMxRecord(domainName):
     return str(firstRecord)
 
 def sendMailMx(envelope):
+    """Connects to the SMTP server of the destination to deliver the mail"""
     recptMx = {}
+    # Constructing a dictionary of the MX records
     for rcpt in envelope.rcpt_tos:
         atPos = rcpt.index('@')
         domainName = rcpt[atPos+1:]
@@ -23,6 +26,7 @@ def sendMailMx(envelope):
             recptMx[mx] = []
         recptMx[mx].append(rcpt)
 
+    # Connecting to each server and delivering the email
     for mx, rcpts in recptMx.items():
         try:
             client = SMTPClient(mx, 25, timeout = timeoutDuration)

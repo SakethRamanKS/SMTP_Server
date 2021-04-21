@@ -10,6 +10,8 @@ class MongoConnect:
     __instance = None
     @staticmethod
     def getConnection():
+        """Function that creates a new instance if an instance does not exist
+            Returns the already existing instance if an instance exists"""
         if MongoConnect.__instance == None:
             MongoConnect()
         dbUser = os.environ.get("USERNAME")

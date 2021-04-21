@@ -1,19 +1,22 @@
-import hashlib
-from Crypto.Cipher import AES
+# A Flask application to receive incoming mails
+# The SendGrid Inbound Parse Webhook is used to receive incoming emails
+
 from dotenv import load_dotenv
 load_dotenv()
 from flask import Flask, request
 import os
+
 from modules.db.dbConnection import MongoConnect
 from modules.mail.parseRecvMail import extractDetails
 from modules.auth.encrypt import encryptAES
 
 app = Flask(__name__)
 
-
+# Receive POST Requests at the /email endpoint
 @app.route('/email', methods=['POST'])
 
 def receive_email():
+    """Receives an incoming email, encrypts the contents, and stores the encrypted in email in a MongoDB database"""
     print("Received mail")
     username, fromMailId, subject, body = extractDetails(request)
 
@@ -29,20 +32,9 @@ def receive_email():
     print(dataDocDict)
     InMailCollection.insert_one(dataDocDict)
 
-    # print("testing decryption")
-    # key = genKey(username)
-    # cipher2 = AES.new(key, AES.MODE_EAX, nonce)
-    # data2 = cipher2.decrypt_and_verify(ciphertext, tag)
-    # print(data2)
-
     return ''
 
-@app.route('/', methods=['GET'])
-
-def get_req():
-    print("Got get request")
-    return 'Hello World from Flask!'
-
-app.run(host= '0.0.0.0')
-
+def startReceiveMails():
+    """Starts the flask application"""
+    app.run(host= '0.0.0.0')
     

@@ -1,0 +1,51 @@
+Starting flask app
+ * Serving Flask app "receiveMails" (lazy loading)
+ * Environment: production
+[31m   WARNING: This is a development server. Do not use it in a production deployment.[0m
+[2m   Use a production WSGI server instead.[0m
+ * Debug mode: off
+Starting Django
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+Relay Server running on port 8000
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 20, 2021 - 03:58:54
+Django version 3.2, using settings 'signup_site.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+Auth plain called
+Auth called
+Successful login
+Session.login_data is deprecated and will be removed in version 2.0
+sanjay
+Using sendgrid
+TYPE: <class 'sendgrid.helpers.mail.mail.Mail'>
+{'from': {'email': 'sanjay@mail.inscriptio.me'}, 'subject': 'Random', 'personalizations': [{'to': [{'email': 'saketh@mail.inscriptio.me'}]}], 'content': [{'type': 'text/plain', 'value': 'Some stuff'}]}
+202
+Server: nginx
+Date: Tue, 20 Apr 2021 04:01:07 GMT
+Content-Length: 0
+Connection: close
+X-Message-Id: jLfPasBBTkedH_2PxF024g
+Access-Control-Allow-Origin: https://sendgrid.api-docs.io
+Access-Control-Allow-Methods: POST
+Access-Control-Allow-Headers: Authorization, Content-Type, On-behalf-of, x-sg-elas-acl
+Access-Control-Max-Age: 600
+X-No-CORS-Reason: https://sendgrid.com/docs/Classroom/Basics/API/cors.html
+Strict-Transport-Security: max-age=600; includeSubDomains
+
+
+Mail sent successfully through Sendgrid
+Received mail
+In extractDetails function
+saketh sanjay@mail.inscriptio.me Random Some stuff
+
+{'username': 'saketh', 'ciphertext': b'\xda\xb5\xcfHhM\xe8\xce\x89\x08\x8d\xbd294\xa7\xeeR\x1a#X\x91\xd4\xae^\tI\xb0e|\xbaf\x8f\x131\xb9\xf6s\x8e;\xa7?\x8e9', 'tag': b'\x08\xaa\xed\x8b\xea\xa8\x01C\xa3Y\x05^X\xf0\xb6W', 'nonce': b'\xca\x1ay\x82e1\xfea\xec\x90Xi2\xd8\x08%'}
+167.89.116.67 - - [20/Apr/2021 04:01:10] "[37mPOST /email HTTP/1.1[0m" 200 -
+^CTerminating program
+[0m^CException ignored in: <module 'threading' from '/usr/lib/python3.8/threading.py'>
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 1388, in _shutdown
+    lock.acquire()
+KeyboardInterrupt: 

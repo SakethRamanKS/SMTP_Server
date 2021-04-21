@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-cs45^9a5j32+$$hwrx3mtgo!(g5!ee4ue52i6#-vdb&*i7s3+8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.89.39.119']
+ALLOWED_HOSTS = ['52.89.39.119', 'inscriptio.me']
 
 
 # Application definition
