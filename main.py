@@ -1,6 +1,8 @@
 # This is the main file which starts the execution of the other compoennts
 # The Flask and Django web servers run in separate threads
 # The SMTP Relay Server runs in the main thread using an asynchronous event loop  
+# Domain: inscriptio.me
+# Mail Domain: mail.inscriptio.me
 
 import asyncio
 import threading

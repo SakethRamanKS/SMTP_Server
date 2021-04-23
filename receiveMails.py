@@ -20,17 +20,25 @@ def receive_email():
     print("Received mail")
     username, fromMailId, subject, body = extractDetails(request)
 
-    encryptText = fromMailId + '+' + subject + '+' + body
-    ciphertext, tag, nonce = encryptAES(username, encryptText)
-
     client = MongoConnect.getConnection()
     dbName = os.environ.get("DBNAME")
-    collectionName = os.environ.get("MAILCOLLNAME")
-    InMailCollection = client[dbName][collectionName]
+    userCollectionName = os.environ.get("USERCOLLNAME")
+    UserCollection = client[dbName][userCollectionName]
 
-    dataDocDict = {'username': username, 'ciphertext': ciphertext, 'tag': tag, 'nonce': nonce}
-    print(dataDocDict)
-    InMailCollection.insert_one(dataDocDict)
+    user = UserCollection.find_one({"username":username})
+
+    if user:
+        encryptText = fromMailId + '+' + subject + '+' + body
+        ciphertext, tag, nonce = encryptAES(username, encryptText)
+       
+        mailCollectionName = os.environ.get("MAILCOLLNAME")
+        InMailCollection = client[dbName][mailCollectionName]
+    
+        dataDocDict = {'username': username, 'ciphertext': ciphertext, 'tag': tag, 'nonce': nonce}
+        print(dataDocDict)
+        InMailCollection.insert_one(dataDocDict)
+    else:
+        print("Received email for user that does not exist")
 
     return ''
 

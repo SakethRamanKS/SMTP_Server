@@ -56,7 +56,7 @@ class SmtpRelayHandler:
             Otherwise the Sendgrid API is used to relay the mail"""
         if not validateFrom(envelope.mail_from):
             return '454 Temporary Authentication Failure'
-
+        
         if sendMailMx(envelope):
             print("Mail sent successfully through mx method")
 
