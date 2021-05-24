@@ -27,7 +27,7 @@ Done by Saketh Raman KS and Sanjay T as part of Computer Networks and TCP/IP Lab
 <a href="https://inscriptio.me" target="new">https://inscriptio.me</a>
 
 #### NOTE!!!
-     This app requires AWS EC2 instance running due to billing reasons it turned off 
+     This app requires AWS EC2 instance running due to billing reasons it is turned off 
 
 #### Start the server
       python3 main.py
