@@ -26,7 +26,7 @@ Done by Saketh Raman KS and Sanjay T as part of Computer Networks and TCP/IP Lab
 ### Website Link
 <a href="https://inscriptio.me" target="new">https://inscriptio.me</a>
 
-####NOTE!!!
+#### NOTE!!!
      This app requires AWS EC2 instance running due to billing reasons it turned off 
 
 #### Start the server
